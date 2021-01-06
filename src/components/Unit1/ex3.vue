@@ -1,9 +1,9 @@
 <template>
   <div class="container">
-    <div class="calculatorWrap">
+    <div class="cal">
       <div class="resultWrap">
         <div class="result">
-          <p class="valueWrap">{{ result }}</p>
+          <p class="val">{{ result }}</p>
         </div>
       </div>
       <div class="inputWrap">
@@ -205,7 +205,7 @@ export default {
   align-items: center;
   justify-content: center;
   height: 500px;
-  .calculatorWrap {
+  .cal {
     background:whitesmoke;
     border: 3px solvalue gray;
     width: 400px;
@@ -214,7 +214,7 @@ export default {
     background-color: #424345;
     .resultWrap {
       .result {
-        .valueWrap {
+        .val {
           margin: 15px;
           color: white;
           font-size: 30px;
