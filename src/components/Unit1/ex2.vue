@@ -1,20 +1,20 @@
 
 <template>
   <div class="container">
-    <div class="loginWrap">
-      <div class="inputWrap">
+    <div class="login">
+      <div class="input">
         <div class="inputLabel">Họ và tên</div>
         <input type="text" ref="name"/>
       </div>
-      <div class="inputWrap">
+      <div class="input">
         <div class="inputLabel">Ngày sinh</div>
         <input type="text" ref="birthDay"/>
       </div>
-      <div class="inputWrap">
+      <div class="input">
         <div class="inputLabel">Số điện thoại</div>
         <input type="text" ref="phone"/>
       </div>
-      <div class="inputWrap">
+      <div class="input">
         <div class="inputLabel">Link Facebook</div>
         <input type="text" ref="facebook"/>
       </div>
@@ -42,7 +42,7 @@
 
 <script>
 export default {
-  name: "Lesson2",
+  name: "ex2",
   data() {
     return {
       name: "",
@@ -74,13 +74,13 @@ export default {
   align-items: center;
   justify-content: center;
   height: 500px;
-  .loginWrap {
+  .login {
     background: #f5f5f5;
     border: 1px solid #6e6e6e;
     padding: 24px;
     width: 300px;
     height: 400px;
-    .inputWrap {
+    .input {
       margin-bottom: 12px;
       .inputLabel {
         font-weight: bold;

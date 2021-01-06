@@ -128,7 +128,7 @@
 
 <script>
 export default {
-  name: "Lesson3",
+  name: "ex3",
   data() {
     return {
       result: "0",

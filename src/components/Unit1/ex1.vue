@@ -1,11 +1,11 @@
 <template>
   <div class="container">
-    <div class="loginWrap">
-      <div class="inputWrap">
+    <div class="login">
+      <div class="input">
         <div class="inputLabel">Nhập tiêu đề</div>
         <input type="text" v-model="title"/>
       </div>
-      <div class="inputWrap">
+      <div class="input">
         <div class="inputLabel">Nhập nội dung</div>
         <textarea name="" id="" cols="30" rows="10" v-model="strHtml"></textarea>
       </div>
@@ -20,7 +20,7 @@
 
 <script>
 export default {
-    name:"Lesson1",
+    name:"ex1",
     data () {
       return {
         title:"",
@@ -37,14 +37,14 @@ export default {
   align-items: center;
   justify-content: center;
   height: 500px;
-  .loginWrap {
+  .login {
     background: #f5f5f5;
     border: 1px solid #6e6e6e;
     border-radius: 5px;
     padding: 24px;
     height: 250px;
     width: 300px;
-    .inputWrap {
+    .input {
       margin-bottom: 12px;
       
       .inputLabel {
