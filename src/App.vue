@@ -1,19 +1,21 @@
 <template>
   <div id="app">
-    <ex1 />
+    <Lession2 />
   </div>
 </template>
 
 <script>
-import ex1 from './components/Unit1/ex1.vue'
+// import ex1 from './components/Unit1/ex1.vue'
+import Lession2 from './components/Lession2.vue'
 
 export default {
   name: 'App',
   components: {
     // HelloWorld
     // ex3
-    ex1
+    // ex1
     // ex2
+    Lession2
   }
 }
 </script>
