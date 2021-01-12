@@ -203,7 +203,6 @@ export default {
   .product {
     width: 100%;
     display: flex;
-    //align-items: center;
     .table {
       width: 60%;
       margin: 0 50px;
@@ -221,7 +220,6 @@ export default {
           padding: 15px;
           img {
             width: 50px;
-            // margin-right: 10px;
           }
         }
         .status {
@@ -307,7 +305,6 @@ export default {
               padding: 15px 0px;
               img {
                 width: 60px;
-                // margin-right: 10px;
               }
               .quantityInput {
                 padding: 10px;
