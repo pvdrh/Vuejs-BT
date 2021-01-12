@@ -196,15 +196,15 @@ export default {
     .Wrap {
       #Cart {
         border-collapse: collapse;
-        border: 1px solid #ddd;
+        border: 1px solid white;
         width: 100%;
         th {
-          background-color: #ecf2fd;
-          border: 1px solid #ddd;
+          background-color: #f2f6fe;
+          border: 1px solid white;
           padding: 15px;
         }
         td {
-          border-left: 1px solid #ddd;
+          border-left: 1px solid white;
           padding: 15px;
           img {
             width: 50px;
