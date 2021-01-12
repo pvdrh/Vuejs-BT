@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <Ex1 />
+    <Ex2 />
   </div>
 </template>
 
 <script>
 // import ex1 from './components/Unit1/ex1.vue'
-import Ex1 from './components/Unit2/Ex1.vue'
+import Ex2 from './components/Unit2/Ex2.vue'
 
 export default {
   name: 'App',
   components: {
-    Ex1
+    Ex2
   }
 }
 </script>

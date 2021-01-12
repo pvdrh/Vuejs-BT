@@ -70,7 +70,7 @@
 
 <script>
 export default {
-  name: "Cart",
+  name: "Unit2-ex1",
   data() {
     return {
       imageFilter:
