@@ -1,26 +1,21 @@
 <template>
   <div class="container">
-    <div class="login">
-      <div class="input">
-        <div class="inputLabel">Nhập tiêu đề</div>
-        <input type="text" v-model="title"/>
-      </div>
-      <div class="input">
-        <div class="inputLabel">Nhập nội dung</div>
-        <textarea name="" id="" cols="30" rows="10" v-model="strHtml"></textarea>
-      </div>
-    </div>
-    <div class="infoWrap">
-      <div><h2>{{title}}</h2></div>
-      <div v-html="strHtml"></div>
-
-    </div>
+   <Ex1_login />
+   <Ex1_info />
+    
   </div>
 </template>
 
 <script>
+import Ex1_login from './Ex1_login.vue'
+import Ex1_info from './Ex1_info.vue'
+
 export default {
     name:"ex1",
+      components: {
+    Ex1_login,
+    Ex1_info
+  },
     data () {
       return {
         title:"",
@@ -37,51 +32,7 @@ export default {
   align-items: center;
   justify-content: center;
   height: 500px;
-  .login {
-    background: #f5f5f5;
-    border: 1px solid #6e6e6e;
-    border-radius: 5px;
-    padding: 24px;
-    height: 250px;
-    width: 300px;
-    .input {
-      margin-bottom: 12px;
-      
-      .inputLabel {
-        font-weight: bold;
-        margin-bottom: 8px;
-        text-align: left;
-      }
-      textarea {
-        width: 292px;
-        resize: none;
-      }
-      input {
-        width: 292px;
-        height: 30px;
-      }
-    }
-    button {
-      width: 100%;
-      height: 40px;
-      border-radius: 5px;
-      margin-top: 20px;
-      background: #0080dd;
-      color: #fff;
-      border: unset;
-      font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-    }
-  }
-  .infoWrap {
-    background: #fff;
-    border: 1px solid #6e6e6e;
-    border-radius: 5px;
-    padding: 24px;
-    height: 250px;
-    width: 250px;
-    margin-left: 24px;
-  }
+ 
+ 
 }
 </style>
