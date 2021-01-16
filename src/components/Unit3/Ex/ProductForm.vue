@@ -1,18 +1,32 @@
 <template>
-      <div class="login">
+      <div class="product">
+          <h1>Sản Phẩm</h1>
       <div class="input">
-        <div class="inputLabel">Nhập tiêu đề</div>
-        <input type="text" v-model="title"/>
+        <div class="inputLabel">Tên Sản Phẩm</div>
+        <input type="text" v-model="title" placeholder="Nhập tên sản phẩm"/>
       </div>
       <div class="input">
-        <div class="inputLabel">Nhập nội dung</div>
-        <textarea name="" id="" cols="30" rows="10" v-model="strHtml"></textarea>
+        <div class="inputLabel">Đơn Giá</div>
+        <input type="number" v-model="title" placeholder="Nhập đơn giá sản phẩm"/>
+      </div>
+       <div class="input">
+        <div class="inputLabel">Số Lượng</div>
+        <input type="number" v-model="title" placeholder="Nhập số lượng sản phẩm"/>
       </div>
     </div>
 </template>
 
+<script>
+    export default {
+  name: "ProductForm",
+}
+</script>
+
 <style>
- .login {
+h1{
+    color: blue;
+}
+ .product {
     background: #f5f5f5;
     border: 1px solid #6e6e6e;
     border-radius: 5px;

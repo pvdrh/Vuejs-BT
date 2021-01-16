@@ -13,7 +13,7 @@
 
       <div class="bodyWrap">
         <div class="list">
-          <Item v-if="todos.length > 0" :todos="todos" @deleteTodo="delTask"/>
+          <TodoItem v-if="todos.length > 0" :todos="todos" @deleteTodo="delTask"/>
           <div v-else class="none">
             Chưa có task nào được thêm
           </div>
@@ -28,7 +28,7 @@ import Item from "@/components/Unit3/Ex/Item.vue";
 export default {
   name: "Todo",
   components: {
-    Item
+    TodoItem
   },
   data() {
     return {
