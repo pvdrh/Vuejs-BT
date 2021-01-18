@@ -24,7 +24,7 @@
 </template>
 
 <script>
-import Item from "@/components/Unit3/Ex/Item.vue";
+import TodoItem from "@/components/Unit3/Ex/TodoItem.vue";
 export default {
   name: "Todo",
   components: {

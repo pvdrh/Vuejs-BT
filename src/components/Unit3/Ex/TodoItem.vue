@@ -17,7 +17,7 @@
 <script>
 export default {
   props:['todos'],
-  name: "Item",
+  name: "TodoItem",
   methods:{
     deleteTodo(index){
       this.$emit('deleteTodo',index);
