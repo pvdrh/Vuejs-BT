@@ -3,11 +3,10 @@
     <div class="container">
       <div class="banner">
         <slot name="banner">
-
         </slot>
       </div>
       <el-menu :default-active="1" class="el-menu-demo" mode="horizontal" @select="handleSelect">
-        <el-menu-item index="1">Trang trủ</el-menu-item>
+        <el-menu-item index="1">Trang chủ</el-menu-item>
         <el-submenu index="2">
           <template slot="title">Thể thao</template>
           <el-menu-item index="2-1">Bóng đá trong nước</el-menu-item>
