@@ -23,7 +23,7 @@
               @prev-click="goPrePage"
               @next-click="goNextPage"
               :page-size="5"
-              layout="total, prev, pager, next, jumper"
+              layout="Tổng, prev, pager, next, Nhảy tới"
               :total="20">
           </el-pagination>
         </div>
