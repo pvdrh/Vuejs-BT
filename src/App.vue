@@ -1,17 +1,17 @@
 <template>
   <div id="app">
-    <Exercise />
+    <ProductPage />
   </div>
 </template>
 
 <script>
 
-import Exercise from './components/Unit3/Ex/Exercise.vue'
+import ProductPage from './components/Unit4/Ex1/ProductPage.vue'
 
 export default {
   name: 'App',
   components: {
-    Exercise
+    ProductPage
   }
 }
 </script>
