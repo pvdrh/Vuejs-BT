@@ -24,7 +24,8 @@
         <el-menu-item index="6">Giáo dục</el-menu-item>
         <el-menu-item index="7">Văn hóa</el-menu-item>
         <el-menu-item index="8">Công nghệ</el-menu-item>
-        <el-menu-item index="9">Giải trí</el-menu-item>
+        <router-link to="/main"><el-menu-item index="9" @click="handleClick">Giải trí</el-menu-item></router-link>
+       
       </el-menu>
       <el-col span="6">
         <slot name="ad1">

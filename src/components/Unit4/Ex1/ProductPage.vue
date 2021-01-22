@@ -23,7 +23,7 @@
               @prev-click="goPrePage"
               @next-click="goNextPage"
               :page-size="5"
-              layout="Tổng, prev, pager, next, Nhảy tới"
+              layout="total, prev, pager, next, jumper"
               :total="20">
           </el-pagination>
         </div>
@@ -33,8 +33,9 @@
 </template>
 
 <script>
- import BaseLayout from './BaseLayout.vue'  
+  import BaseLayout from './BaseLayout.vue'  
   export default {
+    name: 'ProductPage',
     components: {
       BaseLayout
     },
@@ -45,7 +46,7 @@
         address: 'No. 189, Grove St, Los Angeles'
       };
       return {
-        tableData: Array(20).fill(item),
+        tableData: Array(50).fill(item),
         currentPage: 1,
         perPage: 4
       }
