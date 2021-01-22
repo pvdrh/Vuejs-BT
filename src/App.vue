@@ -1,16 +1,24 @@
 <template>
   <div id="app">
-    <NewsDetailPage/>
+    <LoginForm v-if="!isLogin" @LoginSuccess="login" />
+    <Dashboard v-else/>
   </div>
 </template>
 
 <script>
-   import NewsDetailPage from './components/Unit4/Ex2/NewsDetailPage.vue'  
-   export default{
-     components:{
-       NewsDetailPage
-     }
-   }
+  import LoginForm from "./components/Unit5/LoginForm"
+  import Dashboard from "./components/Unit5/Dashboard"
+  export default{
+     components: {
+      LoginForm,
+      Dashboard
+    },
+    data() {
+      return {
+        isLogin: false
+      }
+    }
+  }
 </script>
 
 <style lang="scss">
@@ -33,5 +41,14 @@
       color: #42b983;
     }
   }
+}
+
+body {
+  font-family: Roboto,sans-serif;
+  background: #f6f7f9 !important;
+  font-size: 14px;
+  color: #253036;
+  margin: 0;
+  padding: 0;
 }
 </style>

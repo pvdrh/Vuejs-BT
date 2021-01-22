@@ -1,31 +1,35 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Content2 from '../views/Content2.vue'
-import Main from '../views/Main.vue'
+
+
 
 Vue.use(VueRouter)
 
-const routes = [
-    // {
-    //     path: '/about',
-    //     name: 'About',
-    //     // route level code-splitting
-    //     // this generates a separate chunk (about.[hash].js) for this route
-    //     // which is lazy-loaded when the route is visited.
-    //     component: () =>
-    //         import ( /* webpackChunkName: "about" */ '../views/About.vue')
-    // }
-    {
-
-        path: '/main',
-        name: 'Main',
-        component: Main
+const routes = [{
+        //     path: '/',
+        //     name: 'Home',
+        //     component: Home
+        // },
+        // {
+        //     path: '/about',
+        //     name: 'About',
+        //     // route level code-splitting
+        //     // this generates a separate chunk (about.[hash].js) for this route
+        //     // which is lazy-loaded when the route is visited.
+        //     component: () =>
+        //         import ( /* webpackChunkName: "about" */ '../views/About.vue')
+        // },
+        // {
+        path: '/login',
+        name: 'LoginForm',
+        component: () =>
+            import ('../components/Unit5/LoginForm')
     },
     {
-
-        path: '/content2',
-        name: 'Content2',
-        component: Content2
+        path: '/dashboard',
+        name: 'Dashboard',
+        component: () =>
+            import ('../components/Unit5/Dashboard')
     }
 ]
 
