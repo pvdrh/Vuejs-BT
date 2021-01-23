@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <LoginForm v-if="!isLogin" @LoginSuccess="login" />
+    <LoginForm v-if="!isLogin" />
     <Dashboard v-else/>
   </div>
 </template>

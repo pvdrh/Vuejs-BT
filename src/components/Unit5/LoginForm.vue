@@ -44,9 +44,6 @@
         if (this.password.length == '') {
           this.errorPass = true
         }
-        if (!this.errorPass && !this.errorUsername) {
-          this.$emit('LoginSuccess', 'ok')
-        }
       },
       onChangeUser(user) {
         this.username = user
@@ -62,8 +59,8 @@
 
 <style lang="scss" scoped>
   .container{
-background-color: #0093e9;
-  .Wrap {
+  background-color: #0093e9;
+    n.Wrap {
     width: 444px;
     padding: 24px;
     background-color:white;
