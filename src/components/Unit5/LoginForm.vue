@@ -60,7 +60,7 @@
 <style lang="scss" scoped>
   .container{
   background-color: #0093e9;
-    n.Wrap {
+    .Wrap {
     width: 444px;
     padding: 24px;
     background-color:white;
