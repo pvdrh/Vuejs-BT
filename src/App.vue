@@ -1,24 +1,19 @@
 <template>
   <div id="app">
-    <LoginForm v-if="!isLogin" />
-    <Dashboard v-else/>
+    <Exercise />
   </div>
 </template>
 
 <script>
-  import LoginForm from "./components/Unit5/LoginForm"
-  import Dashboard from "./components/Unit5/Dashboard"
-  export default{
-     components: {
-      LoginForm,
-      Dashboard
-    },
-    data() {
-      return {
-        isLogin: false
-      }
-    }
-  }
+import Exercise from "./components/Unit7/Ex2/Exercise";
+export default {
+  components: {
+    Exercise,
+  },
+  data() {
+    return {};
+  },
+};
 </script>
 
 <style lang="scss">
@@ -44,7 +39,7 @@
 }
 
 body {
-  font-family: Roboto,sans-serif;
+  font-family: Roboto, sans-serif;
   background: #f6f7f9 !important;
   font-size: 14px;
   color: #253036;
