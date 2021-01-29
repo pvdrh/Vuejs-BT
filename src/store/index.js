@@ -62,15 +62,6 @@ const store = new Vuex.Store({
                 }
             })
         },
-        formatProductName: (state) => (id) => {
-            state.products.find(product => {
-                if (product.id == id) {
-                    if (product.name.length > 25) {
-                        return product.name = `${product.name.substring(0, 25)}...`;
-                    }
-                }
-            })
-        },
 
     },
     mutations: {
@@ -88,15 +79,15 @@ const store = new Vuex.Store({
         cart2(state, name) {
             state.prd.push(name)
         },
-        update2(state, editableProduct) {
-            let index = state.prd.findIndex((product) => { return product.id === editableProduct.id })
+        update2(state, editPro) {
+            let index = state.prd.findIndex((product) => { return product.id === editPro.id })
             if (index !== -1) {
                 let newProducts = JSON.parse(JSON.stringify(state.prd))
                 newProducts[index] = {
                     ...newProducts[index],
-                    name: editableProduct.name,
-                    price: editableProduct.price,
-                    quantity: editableProduct.quantity,
+                    name: editPro.name,
+                    price: editPro.price,
+                    quantity: editPro.quantity,
                 }
                 state.prd = newProducts
             }

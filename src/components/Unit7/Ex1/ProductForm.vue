@@ -5,7 +5,7 @@
       <div class="inputLabel">Tên sản phẩm <span>(*)</span></div>
       <input type="text" placeholder="Nhập tên sản phẩm" v-model="name" />
       <div class="errorMsg">
-        {{ nameErrorMsg }}
+      
       </div>
     </div>
     <div class="inputWrap">
@@ -16,7 +16,7 @@
         v-model="price"
       />
       <div class="errorMsg">
-        {{ priceErrorMsg }}
+      
       </div>
     </div>
     <div class="inputWrap">
@@ -27,38 +27,30 @@
         v-model="quantity"
       />
       <div class="errorMsg">
-        {{ quantityErrorMsg }}
+      
       </div>
     </div>
     <div class="formActions">
-      <button class="saveButton" @click="saveProduct">Lưu</button>
+      <button class="saveButton">Lưu</button>
       <button class="defaultButton" @click="clearData">Hủy</button>
     </div>
   </div>
 </template>
 
 <script>
-import { mapMutations, mapState } from "vuex";
+
 export default {
   name: "ProductForm",
   data() {
     return {
-      name: "",
-      price: "",
-      quantity: "",
+      
     };
   },
   computed: {
-    ...mapState(["nameErrorMsg", "priceErrorMsg", "quantityErrorMsg"]),
+  
   },
   methods: {
-    ...mapMutations(["isDataValidated"]),
-    saveProduct() {
-      if (this.isDataValidated(this.name, this.price, this.quantity) == true) {
-        console.log("true");
-      } else {
-        console.log("false");
-      }
+   
     },
     clearData() {
       this.name = "";
@@ -66,8 +58,8 @@ export default {
       this.quantity = "";
       this.$emit("onClear");
     },
-  },
-};
+  };
+
 </script>
 
 <style lang="scss" scoped>
