@@ -48,14 +48,14 @@
           @click="goPrePage"
           :class="{ isBut: page }"
         >
-          <img src="../../../assets/left-arrow.png" alt="" />
+          <!-- <img src="../../../assets/left-arrow.png" alt="" /> -->
         </button>
         <button
           class="pbut"
           @click="goNextPage"
           :class="{ isBut: isGoNextPageDisabled }"
         >
-          <img src="../../../assets/right-arrow.png" alt="" />
+          <!-- <img src="../../../assets/right-arrow.png" alt="" /> -->
         </button>
       </div>
     </div>
