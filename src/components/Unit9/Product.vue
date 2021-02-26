@@ -226,13 +226,8 @@ export default {
 </script>
 <style lang="scss" scoped>
   .container {
-    .add-product {
-      text-align: left;
-    }
     .pagination {
-      text-align: right;
-      padding-right: 30px;
-      margin-top: 20px;
+      margin-top: 10px;
     }
   }
 </style>
