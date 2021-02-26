@@ -172,9 +172,7 @@ export default {
         if (valid) {
           this.storeProduct()
           this.dialogVisible = false
-          alert('Tạo mới thành công!');
         } else {
-          console.log('error submit!!');
           return false;
         }
       });
