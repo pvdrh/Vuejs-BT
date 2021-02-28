@@ -6,67 +6,79 @@
     <el-dialog
         title="Tạo mới sản phẩm"
         :visible.sync="dialogVisible"
-        width="30%"
+        width="40%"
         style="text-align: left"
-        >
-      <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
+    >
+      <el-form :model="ruleForm"  ref="ruleForm" label-width="120px" class="demo-ruleForm">
         <el-form-item label="Tên sản phẩm" prop="name">
           <el-input v-model="ruleForm.name"></el-input>
         </el-form-item>
-        <el-form-item label="Mô tả" prop="description">
+        <el-form-item label="Trạng Thái" prop="description">
           <el-input v-model="ruleForm.description"></el-input>
         </el-form-item>
         <el-form-item label="Giá" prop="price">
           <el-input type="number" v-model="ruleForm.price"></el-input>
         </el-form-item>
+       
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button round @click="dialogVisible = false">Hủy</el-button>
         <el-button type="success" round  @click="submitForm('ruleForm')">Tạo mới</el-button>
         </span>
     </el-dialog>
+     <div>
+        <input type="file" @change="onChangeImage">
+        <button @click="uploadImage">Upload</button>
+    </div>
+    <div class="search" style="width: 250px;
+    position: absolute">
+      <el-input
+          placeholder="Type something"
+          prefix-icon="el-icon-search"
+          @keyup.enter.native="searchList()"
+          v-model="search">
+      </el-input>
+    </div>
     <el-table
-        :data="tableData.filter(data => !search || data.name.toLowerCase().includes(search.toLowerCase()))"
+        :data="tableData"
         style="width: 100%">
       <el-table-column
           label="Tên sản phẩm"
           prop="name"
-          >
+      >
       </el-table-column>
       <el-table-column
           label="Giá"
           prop="price">
+          <template slot-scope="scope">
+          <span style="margin-left: 10px">{{ Number( scope.row.price).toLocaleString('vi-VN') }} VNĐ</span>
+          </template>
       </el-table-column>
       <el-table-column
           label="Trạng thái"
           prop="description">
       </el-table-column>
       <el-table-column
-          align="right">
-        <template slot="header" slot-scope="scope">
-          <el-input
-              style="width:65%"
-              @click="handleEdit(scope.$index, scope.row)"
-              v-model="search"
-              size="medium"
-              placeholder="Tìm kiếm"/>
-        </template>
+          align="right"
+      label="Action">
+
         <template slot-scope="scope">
           <el-button
               round
               size="medium"
               @click="handleEdit(scope.$index, scope.row)">Chỉnh sửa</el-button>
-          <el-button
-              round
-              size="medium"
-              type="danger"
-              @click="handleDelete(scope.$index, scope.row)">Xóa</el-button>
+              <el-button
+                round
+                size="medium"
+                v-model="search"
+                type="danger"
+                @click="confirmDelete(scope.$index, scope.row)">Xóa</el-button>
           <el-dialog
+              style="text-align:center"
               title="Chỉnh sửa sản phẩm"
               :visible.sync="editModal"
-              width="40%"
-          >
-            <el-form :model="ruleForm" :rules="rules" ref="ruleForm" label-width="120px" class="demo-ruleForm">
+              width="40%">
+            <el-form :model="ruleForm"  ref="ruleForm" label-width="120px" class="demo-ruleForm">
               <el-form-item label="Tên sản phẩm" prop="name">
                 <el-input v-model="ruleForm.name"></el-input>
               </el-form-item>
@@ -102,6 +114,7 @@ import axios from 'axios'
 export default {
   data() {
     return {
+      image: '',
       tableData: [],
       search: '',
       dialogVisible: false,
@@ -117,32 +130,30 @@ export default {
   },
   methods: {
     createProduct() {
-      this.dialogVisible = true
-      this.ruleForm.name = ''
       this.ruleForm.description = ''
+      this.dialogVisible = true
       this.ruleForm.price = ''
+      this.ruleForm.name = ''
     },
     handleEdit(index, row) {
-      console.log(row.id)
+      this.idEdit = row.id
       this.editModal = true
       this.ruleForm.name = row.name
-      this.ruleForm.description = row.description
       this.ruleForm.price = row.price
-      this.idEdit = row.id
+      this.ruleForm.description = row.description
     },
     editProduct(formName) {
-      console.log(this.idEdit)
       this.$refs[formName].validate((valid) => {
         if (valid) {
           this.updateProduct(this.idEdit)
           this.editModal = false
+          this.$message.success('Cập nhật thành công')
         } else {
           return false;
         }
       });
     },
     updateProduct(id) {
-      console.log(id)
       axios({
         method: 'put',
         url: 'http://vuecourse.zent.edu.vn/api/products/' + id,
@@ -157,14 +168,22 @@ export default {
         console.log(error);
       });
     },
-    handleDelete(index, row) {
-      axios({
-        method: 'delete',
-        url: 'http://vuecourse.zent.edu.vn/api/products/' + row.id,
+    confirmDelete(row) {
+      this.$confirm('This will permanently delete the file. Continue?', 'Warning', {
+        confirmButtonText: 'OK',
+        cancelButtonText: 'Cancel',
+        type: 'warning'
       }).then(() => {
-        this.getData()
-      }).catch((error) => {
-        console.log(error);
+        this.$message({
+          type: 'success',
+          message: 'Delete completed'
+        });
+        this.handleDelete(row)
+      }).catch(() => {
+        this.$message({
+          type: 'info',
+          message: 'Delete canceled'
+        });
       });
     },
     submitForm(formName) {
@@ -172,6 +191,7 @@ export default {
         if (valid) {
           this.storeProduct()
           this.dialogVisible = false
+          this.$message.success('Tạo mới thành công')
         } else {
           return false;
         }
@@ -217,7 +237,42 @@ export default {
       }).catch((error) => {
         console.log(error);
       });
+    },
+    searchList(){
+      axios({
+        method: 'get',
+        url: 'http://vuecourse.zent.edu.vn/api/products?q='+this.search.toLowerCase(),
+      }).then((response) => {
+        this.tableData = response.data.data.data
+        console.log(response)
+        console.log('get data')
+        this.pageSize = response.data.data.per_page;
+        this.total = response.data.data.total;
+        this.currentPage = response.data.data.current_page
+      }).catch((error) => {
+        console.log(error);
+      });
+    },
+     onChangeImage (e){
+        if(e.target.files.length){
+          this.image = e.target.files[0]
+        }
+    },
+    uploadImage(){
+      const formData = new FormData();
+      formData.append('name', 'Duy')
+      formData.append('price', '123456')
+      formData.append('image', this.image)
+
+      axios({
+        method: 'post',
+        url: 'http://vuecourse.zent.edu.vn/api/products',
+        data: formData
+      }).then(() => {
+      //  console.log(success);
+      })
     }
+
   },
   mounted() {
     this.getData()
@@ -225,9 +280,9 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-  .container {
-    .pagination {
-      margin-top: 10px;
-    }
+.container {
+  .pagination {
+    margin-top: 10px;
   }
+}
 </style>
