@@ -9,7 +9,7 @@
         width="40%"
         style="text-align: left"
     >
-      <el-form :model="ruleForm" ref="ruleForm" label-width="100px" class="demo-ruleForm">
+      <el-form :model="ruleForm"  ref="ruleForm" label-width="120px" class="demo-ruleForm">
         <el-form-item label="Tên sản phẩm" prop="name">
           <el-input v-model="ruleForm.name"></el-input>
         </el-form-item>
@@ -19,20 +19,20 @@
         <el-form-item label="Giá" prop="price">
           <el-input type="number" v-model="ruleForm.price"></el-input>
         </el-form-item>
+          <div>
+        <input type="file" @change="onChangeImage">
+        <button @click="uploadImage">Upload</button>
+    </div>
       </el-form>
       <span slot="footer" class="dialog-footer">
         <el-button round @click="dialogVisible = false">Hủy</el-button>
         <el-button type="success" round  @click="submitForm('ruleForm')">Tạo mới</el-button>
         </span>
     </el-dialog>
-     <div>
-        <input type="file" @change="onChangeImage">
-        <button @click="uploadImage">Upload</button>
-    </div>
     <div class="search" style="width: 250px;
     position: absolute">
       <el-input
-          placeholder="Tìm kiếm"
+          placeholder="Type something"
           prefix-icon="el-icon-search"
           @keyup.enter.native="searchList()"
           v-model="search">
@@ -41,6 +41,14 @@
     <el-table
         :data="tableData"
         style="width: 100%">
+      <el-table-column
+              fixed
+              prop="image"
+              label="Ảnh">
+            <template v-slot="product">
+              <img style="max-width:50px;max-height:50px;border-radius:50%" :src="'http://vuecourse.zent.edu.vn/storage/'+ product.row.image" alt="">
+            </template>
+          </el-table-column>
       <el-table-column
           label="Tên sản phẩm"
           prop="name"
@@ -76,7 +84,7 @@
               title="Chỉnh sửa sản phẩm"
               :visible.sync="editModal"
               width="40%">
-            <el-form :model="ruleForm"  ref="ruleForm" label-width="120px" class="demo-ruleForm">
+            <el-form  ref="ruleForm" label-width="120px" class="demo-ruleForm">
               <el-form-item label="Tên sản phẩm" prop="name">
                 <el-input v-model="ruleForm.name"></el-input>
               </el-form-item>
@@ -184,16 +192,10 @@ export default {
         });
       });
     },
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
+    submitForm() {
           this.storeProduct()
           this.dialogVisible = false
           this.$message.success('Tạo mới thành công')
-        } else {
-          return false;
-        }
-      });
     },
     resetForm(formName) {
       this.$refs[formName].resetFields();
@@ -211,19 +213,32 @@ export default {
       });
     },
     storeProduct() {
-      axios({
-        method: 'post',
-        url: 'http://vuecourse.zent.edu.vn/api/products',
-        data: {
-          name: this.ruleForm.name,
-          description: this.ruleForm.description,
-          price: this.ruleForm.price,
+        const formData= new FormData()
+        formData.append('name',this.name)
+        formData.append('price',this.price)
+        formData.append('description',this.description)
+        if (this.is_update_image){
+          formData.append('image',this.image)
+        }else{
+          console.log('img null')
         }
-      }).then(() => {
-        this.getData()
-      }).catch((error) => {
-        console.log(error);
-      });
+        axios({
+          method: 'post',
+          url: 'http://vuecourse.zent.edu.vn/api/products',
+          data: formData
+        }).then((response) => {
+          this.getData();
+          console.log(response)
+          this.$message.success('Create success')
+          this.dialogFormVisible = false;
+          this.name = ''
+          this.description = ''
+          this.price = ''
+          this.image=''
+
+        }).catch((error) => {
+          console.log(error);
+        });
     },
     changePage(page) {
       axios({

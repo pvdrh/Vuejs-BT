@@ -1,15 +1,21 @@
 <template>
   <div id="app">
-    <Product />
+    <!-- <Product /> bài 9 --> 
+    <!-- <Ex1 /> 10.1--> 
+     <!-- <Product />  10.2-->
   </div>
 </template>
 
 <script>
-import Product from "./components/Unit9/Product.vue";
+// import Product from "./components/Unit9/Product.vue"; bài 9
+// import Ex1 from "./components/Unit10/Ex1.vue";
+// import Product from "./components/Unit10/Product.vue"; 10.2
 
 export default {
   components: {
-    Product
+    // Product bài 9
+    // Ex1
+    // Product 10.2
   },
   data() {
     return {};
